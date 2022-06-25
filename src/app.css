@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../node_modules/animate.css/animate.min.css';
+@import url("../style.css");
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
