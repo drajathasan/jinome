@@ -97,7 +97,8 @@ $('.openDragWindow').click(function () {
   var jinomeWindows = $('#windows');
 
   if ($("#".concat(currentButton.data('module'))).length == 0) {
-    jinomeWindows.append("\n            <div id=\"".concat(currentButton.data('module'), "\" class=\"draggable drag bg-white w-full h-screen animate__animated animate__bounceIn absolute\">\n                <div class=\"flex justify-between p-3 font-bold\">\n                    <h1 class=\"text-lg\">").concat(currentButton.data('label'), "</h1>\n                    <div>\n                        <button class=\"h-5 w-5 bg-yellow-400 rounded-full outline-none border-none minimize\" data-for=\"#").concat(currentButton.data('module'), "\">-</button>\n                        <button class=\"h-5 w-5 bg-red-500 rounded-full outline-none border-none closewindow\" data-for=\"#").concat(currentButton.data('module'), "\">x</button>\n                    </div>\n                </div>\n            </div>\n        "));
+    var r = (Math.random() + 1).toString(35).substring(5);
+    jinomeWindows.append("\n            <div id=\"".concat(currentButton.data('module'), "\" class=\"draggable drag bg-white w-full h-screen animate__animated animate__bounceIn absolute\">\n                <div class=\"flex justify-between p-3 font-bold\">\n                    <div class=\"flex flex-row items-center\">\n                      <h1 class=\"text-md mr-2\">").concat($('title').text(), "</h1> :: \n                      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" data-reload-for=\"#iframeFor").concat(currentButton.data('module'), "\" class=\"reloadIframe cursor-pointer hover:bg-gray-800 hover:text-white p-1 rounded-full ml-2 bi bi-arrow-clockwise\" viewBox=\"0 0 16 16\">\n                        <path fill-rule=\"evenodd\" d=\"M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z\"/>\n                        <path d=\"M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z\"/>\n                      </svg>\n                    </div>\n                    <div>\n                        <button class=\"h-5 w-5 bg-yellow-400 rounded-full outline-none border-none minimize\" data-for=\"#").concat(currentButton.data('module'), "\">-</button>\n                        <button class=\"h-5 w-5 bg-red-500 rounded-full outline-none border-none closewindow\" data-for=\"#").concat(currentButton.data('module'), "\">x</button>\n                    </div>\n                </div>\n                <div class=\"flex\">\n                  <iframe id=\"iframeFor").concat(currentButton.data('module'), "\" src=\"?module=").concat(currentButton.data('module'), "&refresh=").concat(r, "\" class=\"w-full\" style=\"height: 90vh\"></iframe>\n                </div>\n            </div>\n        "));
   } else {
     $("#".concat(currentButton.data('module'))).removeClass('animate__bounceOutDown').addClass('animate__bounceInUp');
   }
@@ -112,6 +113,9 @@ $('#windows').on('click', '.closewindow', function () {
 $('#windows').on('click', '.minimize', function () {
   var closeWindow = $(this);
   $("".concat(closeWindow.data('for'))).removeClass('animate__bounceIn').addClass('animate__bounceOutDown');
+});
+$('#windows').on('click', '.reloadIframe', function () {
+  $($(this).data('reload-for')).attr("src", $($(this).data('reload-for')).attr("src"));
 }); // Full screen
 
 $('.fullscreen').click(function () {
@@ -126,6 +130,32 @@ $('.fullscreen').click(function () {
       document.exitFullscreen();
     }
   }
+}); // menu
+
+$('#triggerMenu').click(function () {
+  $(this).addClass('hidden');
+  scroll({
+    top: 0,
+    behavior: "smooth"
+  });
+  setTimeout(function () {
+    $('#submenu').show();
+    $('#mainContent').hide();
+  }, 100);
+});
+$('.loadContent').click(function (e) {
+  var link = $(this).attr('href');
+  e.preventDefault();
+  scroll({
+    top: 0,
+    behavior: "smooth"
+  });
+  setTimeout(function () {
+    $('#triggerMenu').removeClass('hidden');
+    $('#submenu').hide();
+    $('#mainContent').show();
+    $('#mainContent').simbioAJAX(link);
+  }, 100);
 });
 
 /***/ }),

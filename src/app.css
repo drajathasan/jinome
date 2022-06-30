@@ -17,3 +17,33 @@ body {
     transform: translate(0px, 0px);
     cursor: default !important;
 }
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-default {
+    color: #ffffff;
+    border-color: #808080;
+    background-color: #808080;
+}
+
+.btn-primary {
+    color: #ffffff;
+    border-color: #004db6;
+    background-color: #004db6;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}

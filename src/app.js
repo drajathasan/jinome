@@ -97,14 +97,24 @@ $('.openDragWindow').click(function(){
     
     if ($(`#${currentButton.data('module')}`).length == 0)
     {
+        let r = (Math.random() + 1).toString(35).substring(5);
         jinomeWindows.append(`
             <div id="${currentButton.data('module')}" class="draggable drag bg-white w-full h-screen animate__animated animate__bounceIn absolute">
                 <div class="flex justify-between p-3 font-bold">
-                    <h1 class="text-lg">${currentButton.data('label')}</h1>
+                    <div class="flex flex-row items-center">
+                      <h1 class="text-md mr-2">${$('title').text()}</h1> :: 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" data-reload-for="#iframeFor${currentButton.data('module')}" class="reloadIframe cursor-pointer hover:bg-gray-800 hover:text-white p-1 rounded-full ml-2 bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                      </svg>
+                    </div>
                     <div>
                         <button class="h-5 w-5 bg-yellow-400 rounded-full outline-none border-none minimize" data-for="#${currentButton.data('module')}">-</button>
                         <button class="h-5 w-5 bg-red-500 rounded-full outline-none border-none closewindow" data-for="#${currentButton.data('module')}">x</button>
                     </div>
+                </div>
+                <div class="flex">
+                  <iframe id="iframeFor${currentButton.data('module')}" src="?module=${currentButton.data('module')}&refresh=${r}" class="w-full" style="height: 90vh"></iframe>
                 </div>
             </div>
         `)
@@ -126,6 +136,10 @@ $('#windows').on('click', '.minimize', function(){
     $(`${closeWindow.data('for')}`).removeClass('animate__bounceIn').addClass('animate__bounceOutDown')
 })
 
+$('#windows').on('click', '.reloadIframe', function(){
+  $($(this).data('reload-for')).attr("src", $($(this).data('reload-for')).attr("src"));
+});
+
 // Full screen
 $('.fullscreen').click(function(){
     if (!document.fullscreenElement) {
@@ -139,4 +153,34 @@ $('.fullscreen').click(function(){
             document.exitFullscreen();
         }
     }
+});
+
+// menu
+$('#triggerMenu').click(function(){
+  $(this).addClass('hidden');
+  scroll({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  setTimeout(() => {
+    $('#submenu').show();
+    $('#mainContent').hide();
+  }, 100);
+});
+
+$('.loadContent').click(function(e){
+  let link = $(this).attr('href');
+  e.preventDefault();
+  scroll({
+    top: 0,
+    behavior: "smooth"
+  });
+  setTimeout(() => {
+    $('#triggerMenu').removeClass('hidden');
+    $('#submenu').hide();
+    $('#mainContent').show();
+    $('#mainContent').simbioAJAX(link);
+  }, 100);
 })
+

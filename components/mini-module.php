@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 17:16:26
- * @modify date 2022-06-26 22:35:47
+ * @modify date 2022-06-29 08:06:40
  * @license GPLv3
  * @desc [description]
  */
@@ -35,6 +35,7 @@ $modules = [
 ?>
 <section class="flex flex-row gap-3 animate__animated animate__bounceInUp">
     <?php foreach($modules as $module => $attribute): ?>
+        <?php if (isset($_SESSION['priv'][$module])): ?>
         <div class="flex flex-col items-center cursor-pointer openDragWindow" data-module="<?= $module ?>" data-label="<?= ucwords(__($module)) ?>">
             <div class="flex items-center justify-center <?= $attribute['color'] ?> w-16 h-16 my-2 text-white rounded-xl  cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
@@ -43,6 +44,7 @@ $modules = [
             </div>
             <label class="text-white"><?= ucwords(__($module)) ?></label>
         </div>
+        <?php endif; ?>
     <?php endforeach; ?>
     <div class="flex flex-col items-center">
         <div class="flex items-center justify-center bg-zinc-500 hover:bg-zinc-600 w-16 h-16 my-2 text-white rounded-xl cursor-pointer">
