@@ -3,14 +3,20 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 01:12:38
- * @modify date 2022-06-30 08:04:54
+ * @modify date 2022-07-07 20:47:21
  * @license GPLv3
  * @desc [description]
  */
 
 use Jinome\Supports\Component;
+use Jinome\Supports\Rest;
 
-include __DIR__ . '/lib/autoload.php';
+if (!isset($jinomeContent)):
+    include __DIR__ . '/lib/autoload.php';
+
+    Rest::handle($_GET['rest']??'');
+endif;
+
 ?>
 <!DOCTYPE Html>
 <html>
@@ -51,9 +57,13 @@ include __DIR__ . '/lib/autoload.php';
         <script type="text/javascript" src="<?php echo JWB; ?>toastr/toastr.min.js"></script>
     </head>
     <?php
-    if (!isset($_GET['module']))
+    if (!isset($jinomeContent) && !isset($_GET['module']))
     {
         Component::render('dashboard');
+    }
+    else if (isset($jinomeContent))
+    {
+        echo $jinomeContent;
     }
     else
     {

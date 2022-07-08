@@ -105,7 +105,7 @@ $('.openDragWindow').click(function () {
 });
 $('#windows').on('click', '.closewindow', function () {
   var closeWindow = $(this);
-  $("".concat(closeWindow.data('for'))).removeClass('animate__bounceIn').addClass('animate__bounceOutDown');
+  $("".concat(closeWindow.data('for'))).removeClass('animate__bounceIn').addClass('animate__fadeOut');
   setTimeout(function () {
     $("".concat(closeWindow.data('for'))).remove();
   }, 1000);
@@ -156,6 +156,35 @@ $('.loadContent').click(function (e) {
     $('#mainContent').show();
     $('#mainContent').simbioAJAX(link);
   }, 100);
+});
+$('#searchSubmenu').keyup(function () {
+  var value = $(this).val();
+  var regexp = new RegExp(value, 'i');
+  $('.submenu').each(function (index, elm) {
+    if (!elm.text.match(regexp)) {
+      $(elm).addClass('d-none');
+    } else {
+      $(elm).removeClass('d-none');
+    }
+  });
+});
+$('.hideModule').click(function () {
+  var hide = $(this).data('hideFor');
+  $("#main-".concat(hide)).addClass('hidden').removeClass('mainmodule');
+  $("#input-".concat(hide)).attr('name', 'available[]');
+  $("#available-".concat(hide)).removeClass('hidden');
+});
+$('.showModule').click(function () {
+  var show = $(this).data('showFor');
+
+  if ($('.mainmodule').length == 5) {
+    toastr.error('Jumlah module tampil hanya 5 yang diizinkan ', 'Peringatan');
+  } else {
+    $("#main-".concat(show)).removeClass('hidden').addClass('mainmodule');
+    ;
+    $("#input-".concat(show)).attr('name', 'main[]');
+    $("#available-".concat(show)).addClass('hidden');
+  }
 });
 
 /***/ }),

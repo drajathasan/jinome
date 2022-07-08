@@ -2,6 +2,7 @@ module.exports = {
   content: [
     "./index_template.inc.php",
     "./components/**/*.php",
+    "./modules/**/*.php",
     "./src/**/*.js",
   ],
   presets: [],

@@ -127,7 +127,7 @@ $('.openDragWindow').click(function(){
 
 $('#windows').on('click', '.closewindow', function(){
     let closeWindow = $(this)
-    $(`${closeWindow.data('for')}`).removeClass('animate__bounceIn').addClass('animate__bounceOutDown')
+    $(`${closeWindow.data('for')}`).removeClass('animate__bounceIn').addClass('animate__fadeOut')
     setTimeout(() => { $(`${closeWindow.data('for')}`).remove() }, 1000);
 })
 
@@ -184,3 +184,41 @@ $('.loadContent').click(function(e){
   }, 100);
 })
 
+$('#searchSubmenu').keyup(function(){
+  let value = $(this).val();
+  let regexp = new RegExp(value, 'i');
+
+  $('.submenu').each(function(index,elm){
+    if (!elm.text.match(regexp))
+    {
+      $(elm).addClass('d-none');
+    }
+    else
+    {
+      $(elm).removeClass('d-none');
+    }
+  })
+})
+
+$('.hideModule').click(function(){
+  let hide = $(this).data('hideFor');
+
+  $(`#main-${hide}`).addClass('hidden').removeClass('mainmodule');
+  $(`#input-${hide}`).attr('name', 'available[]');
+  $(`#available-${hide}`).removeClass('hidden');
+});
+
+$('.showModule').click(function(){
+  let show = $(this).data('showFor');
+
+  if ($('.mainmodule').length == 5)
+  {
+    toastr.error('Jumlah module tampil hanya 5 yang diizinkan ', 'Peringatan')
+  }
+  else
+  {
+    $(`#main-${show}`).removeClass('hidden').addClass('mainmodule');;
+    $(`#input-${show}`).attr('name', 'main[]');
+    $(`#available-${show}`).addClass('hidden');
+  }
+});

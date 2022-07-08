@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-08 14:33:09
- * @modify date 2022-06-26 17:46:44
+ * @modify date 2022-06-30 19:47:58
  * @license GPLv3
  * @desc [description]
  */
@@ -24,5 +24,6 @@ foreach ($namespaces as $namespace => $rootPath) {
 }
 
 \Jinome\Supports\Component::setDirectory(__DIR__ . DS . '..' . DS . 'components');
+\Jinome\Supports\Rest::setDirectory(__DIR__ . DS . '..' . DS . 'rest');
 
 include_once __DIR__ . '/Helper.php';
