@@ -12,7 +12,7 @@ endif;
         <?php Component::render('wave') ?>
     </div>
     <?php if ($mainModule): ?>
-    <?php Component::render('submenu', ['module' => $module]) ?>
+    <?php Component::render('submenu', ['module' => $module, 'dbs' => $dbs, 'sysconf' => $sysconf]) ?>
     <?php Component::render('submenu-trigger') ?>
     <?php endif; ?>
     <div class="w-full pb-32" id="mainContent"></div>

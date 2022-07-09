@@ -168,13 +168,13 @@ $('#searchSubmenu').keyup(function () {
     }
   });
 });
-$('.hideModule').click(function () {
+$('#mainContent').on('click', 'form > section > div > .hideModule', function () {
   var hide = $(this).data('hideFor');
   $("#main-".concat(hide)).addClass('hidden').removeClass('mainmodule');
   $("#input-".concat(hide)).attr('name', 'available[]');
   $("#available-".concat(hide)).removeClass('hidden');
 });
-$('.showModule').click(function () {
+$('#mainContent').on('click', 'form > section > div > .showModule', function () {
   var show = $(this).data('showFor');
 
   if ($('.mainmodule').length == 5) {

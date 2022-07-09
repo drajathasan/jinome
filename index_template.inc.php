@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 01:12:38
- * @modify date 2022-07-07 20:47:21
+ * @modify date 2022-07-08 21:33:54
  * @license GPLv3
  * @desc [description]
  */
@@ -37,7 +37,7 @@ endif;
         <link href="<?php echo JWB; ?>chosen/chosen.css?<?php echo date('this') ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo JWB; ?>toastr/toastr.min.css?<?php echo date('this') ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo JWB; ?>jquery.imgareaselect/css/imgareaselect-default.css" rel="stylesheet" type="text/css" />
-        <link href="<?= AWB . str_replace('style.css', 'dist/app.css', $sysconf['admin_template']['css']) ?>" rel="stylesheet">
+        <link href="<?= jinomeUrl('dist/app.css') ?>" rel="stylesheet">
 
         <script type="text/javascript" src="<?php echo JWB; ?>jquery.js"></script>
         <script type="text/javascript" src="<?php echo JWB; ?>updater.js"></script>
@@ -59,11 +59,7 @@ endif;
     <?php
     if (!isset($jinomeContent) && !isset($_GET['module']))
     {
-        Component::render('dashboard');
-    }
-    else if (isset($jinomeContent))
-    {
-        echo $jinomeContent;
+        Component::render('dashboard', ['dbs' => $dbs, 'sysconf' => $sysconf]);
     }
     else
     {
@@ -75,5 +71,5 @@ endif;
         ]);
     }
     ?>
-    <script src="<?= AWB . str_replace('style.css', 'dist/app.js', $sysconf['admin_template']['css']) ?>"></script>
+    <script src="<?= jinomeUrl('dist/app.js') ?>"></script>
 </html>

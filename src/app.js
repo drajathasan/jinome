@@ -200,7 +200,7 @@ $('#searchSubmenu').keyup(function(){
   })
 })
 
-$('.hideModule').click(function(){
+$('#mainContent').on('click', 'form > section > div > .hideModule', function(){
   let hide = $(this).data('hideFor');
 
   $(`#main-${hide}`).addClass('hidden').removeClass('mainmodule');
@@ -208,7 +208,7 @@ $('.hideModule').click(function(){
   $(`#available-${hide}`).removeClass('hidden');
 });
 
-$('.showModule').click(function(){
+$('#mainContent').on('click', 'form > section > div > .showModule', function(){
   let show = $(this).data('showFor');
 
   if ($('.mainmodule').length == 5)
