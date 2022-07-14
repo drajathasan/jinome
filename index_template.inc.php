@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 01:12:38
- * @modify date 2022-07-08 21:33:54
+ * @modify date 2022-07-14 09:21:27
  * @license GPLv3
  * @desc [description]
  */
@@ -11,12 +11,9 @@
 use Jinome\Supports\Component;
 use Jinome\Supports\Rest;
 
-if (!isset($jinomeContent)):
-    include __DIR__ . '/lib/autoload.php';
+include __DIR__ . '/lib/autoload.php';
 
-    Rest::handle($_GET['rest']??'');
-endif;
-
+Rest::handle($_GET['rest']??'');
 ?>
 <!DOCTYPE Html>
 <html>
@@ -57,7 +54,7 @@ endif;
         <script type="text/javascript" src="<?php echo JWB; ?>toastr/toastr.min.js"></script>
     </head>
     <?php
-    if (!isset($jinomeContent) && !isset($_GET['module']))
+    if (!isset($_GET['module']))
     {
         Component::render('dashboard', ['dbs' => $dbs, 'sysconf' => $sysconf]);
     }

@@ -1,6 +1,7 @@
 module.exports = {
   content: [
     "./index_template.inc.php",
+    "./config/**/*.php",
     "./components/**/*.php",
     "./modules/**/*.php",
     "./src/**/*.js",

@@ -222,3 +222,17 @@ $('#mainContent').on('click', 'form > section > div > .showModule', function(){
     $(`#available-${show}`).addClass('hidden');
   }
 });
+
+// alert box
+(async () => {
+  try {
+    let request = await (await fetch('index.php?rest=alert')).json();
+
+    if (request.total_alert > 0)
+    {
+      $('.alertbox').removeClass('hidden').text(request.total_alert);
+    }
+  } catch (error) {
+    console.error(error)
+  }
+})();

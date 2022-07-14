@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-30 19:28:06
- * @modify date 2022-06-30 19:52:05
+ * @modify date 2022-07-14 09:40:32
  * @license GPLv3
  * @desc [description]
  */
@@ -21,11 +21,12 @@ class Rest
     
     public static function handle(string $restName)
     {
-        $dbs = \SLiMS\DB::getInstance('mysqli');
         $fileAttribute = pathinfo($restName);
         if (file_exists($path = self::$directory . basename($fileAttribute['filename']) . '.php'))
         {
-            include_once $path;   
+            ob_start();
+            include_once $path;
+            exit;
         }
     }    
 }

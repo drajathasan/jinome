@@ -1,4 +1,4 @@
-<section class="flex flex-col items-center mt-48 mb-2 w-9/12 animate__animated animate__fadeIn">
+<section class="flex flex-col items-center mt-64 mb-2 w-9/12 animate__animated animate__fadeIn">
     <h1 class="text-3xl w-max font-bold text-gray-100 px-2 py-1 rounded-xl">
         Hi, <?= $_SESSION['realname']?>
     </h1>

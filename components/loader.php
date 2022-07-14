@@ -1,6 +1,6 @@
 <?php
 use Jinome\Supports\Component;
-$mainModule = $module !== 'othermodule';
+$mainModule = !in_array($module, ['othermodule','alert','background']);
 
 $moduleUrl = AWB . 'modules/'. $module . '/index.php';
 if (!$mainModule):
