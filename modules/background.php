@@ -3,12 +3,12 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-07-07 20:14:25
- * @modify date 2022-07-14 15:26:01
+ * @modify date 2022-07-14 20:35:02
  * @license GPLv3
  * @desc [description]
  */
 
-use Jinome\Supports\Component;
+use Jinome\Supports\{Component,Config};
 
 // key to authenticate
 define('INDEX_AUTH', '1');
@@ -26,6 +26,25 @@ require SIMBIO.'simbio_DB/simbio_dbop.inc.php';
 require SIMBIO . 'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO . 'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 include __DIR__ . DS . '..' . DS . 'lib' . DS . 'autoload.php';
+
+if (isset($_POST['saveData']))
+{
+    $data = [];
+    $data['type'] = $_POST['backgroundtype'];
+
+    if ($_POST['backgroundtype'] == 0)
+    {
+        echo '<pre>';
+        var_dump($_FILES);
+        echo '</pre>';
+        exit;
+    }
+
+    Config::put('jinomeBackground', $data);
+    utility::jsToastr('Sukses', 'Berhasil memperbaharui background', 'success');
+    exit;
+}
+
 ?>
 <div class="menuBox">
     <div class="menuBoxInner biblioIcon">
@@ -44,7 +63,7 @@ $form->table_header_attr = 'class="alterCell"';
 $form->table_content_attr = 'class="alterCell2"';
 
 // Background type
-$form->addSelectList('backgroundtype', 'Tipe Background', [[0, 'Lokal Acak'],[1, 'Picsum Acak']], '', 'class="select2"');
+$form->addSelectList('backgroundtype', 'Tipe Background', [[0, 'Lokal Acak'],[1, 'Picsum Acak']], (int)Config::get('jinomeBackground')['type']??1, 'class="select2"');
 // set url
 $url = jinomeUrl('static/images/');
 
@@ -54,8 +73,8 @@ for($img = 1; $img <=5 ; $img++)
     $image .= <<<HTML
     <div class="flex flex-col">
         <img src="{$url}{$img}.jpg" id="img-{$img}" class="w-32 h-32 rounded-xl shadow-2xl">
-        <input data-id="{$img}" type="file" name="background[]" id="file-{$img}" class="hidden"/>
-        <button data-id="{$img}" class="changeBackground btn btn-sm btn-outline-primary rounded-xl my-3">Ganti</button>
+        <input data-id="{$img}" type="file" name="background[{$img}]" id="file-{$img}" class="hidden"/>
+        <button data-id="{$img}" class="changeBackground btn btn-sm btn-outline-primary rounded-xl my-3 notAJAX">Ganti</button>
     </div>
     HTML;
 }

@@ -1440,7 +1440,7 @@ table {
 }
 
 /*
-! tailwindcss v3.1.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -1983,12 +1983,8 @@ video {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
 }
-.my-5 {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-.mt-48 {
-  margin-top: 12rem;
+.mt-64 {
+  margin-top: 16rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -2010,9 +2006,6 @@ video {
 }
 .mr-2 {
   margin-right: 0.5rem;
-}
-.mt-64 {
-  margin-top: 16rem;
 }
 .block {
   display: block;
@@ -2038,14 +2031,11 @@ video {
 .h-auto {
   height: auto;
 }
-.h-5 {
-  height: 1.25rem;
-}
-.h-10 {
-  height: 2.5rem;
-}
 .h-32 {
   height: 8rem;
+}
+.h-5 {
+  height: 1.25rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -2078,9 +2068,6 @@ video {
 }
 .w-5 {
   width: 1.25rem;
-}
-.w-10 {
-  width: 2.5rem;
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2115,8 +2102,8 @@ video {
 .justify-between {
   justify-content: space-between;
 }
-.gap-5 {
-  gap: 1.25rem;
+.gap-6 {
+  gap: 1.5rem;
 }
 .gap-3 {
   gap: 0.75rem;
@@ -2127,23 +2114,17 @@ video {
 .gap-4 {
   gap: 1rem;
 }
-.gap-8 {
-  gap: 2rem;
-}
-.gap-6 {
-  gap: 1.5rem;
-}
-.gap-2 {
-  gap: 0.5rem;
+.gap-5 {
+  gap: 1.25rem;
 }
 .overflow-hidden {
   overflow: hidden;
 }
-.rounded-xl {
-  border-radius: 0.75rem;
-}
 .rounded-lg {
   border-radius: 0.5rem;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 .rounded-full {
   border-radius: 9999px;
@@ -2186,6 +2167,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(194 65 12 / var(--tw-bg-opacity));
 }
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
 .bg-zinc-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(113 113 122 / var(--tw-bg-opacity));
@@ -2205,10 +2190,6 @@ video {
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .p-3 {
   padding: 0.75rem;
@@ -2246,6 +2227,10 @@ video {
 .pt-5 {
   padding-top: 1.25rem;
 }
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -2257,10 +2242,6 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 .font-bold {
   font-weight: 700;

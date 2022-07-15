@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-07-07 20:14:25
- * @modify date 2022-07-14 10:52:08
+ * @modify date 2022-07-14 18:56:45
  * @license GPLv3
  * @desc [description]
  */
@@ -48,7 +48,7 @@ if (is_dir(SB . 'install/')) {
     $errorCheck[] = [true, __('Installer folder is still exist inside your server. Please remove it or rename to another name for security reason.')];
 }
 
-if ($data->total > 0)
+if ($data && $data->total > 0)
 {
    $errorCheck[] = [true, str_replace('{num_overdue}', $data->total, __('There are currently <strong>{num_overdue}</strong> library members having overdue. Please check at <b>Circulation</b> module at <b>Overdues</b> section for more detail'))];
 }

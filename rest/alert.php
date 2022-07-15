@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-07-14 09:26:06
- * @modify date 2022-07-14 10:17:47
+ * @modify date 2022-07-14 18:55:42
  * @license GPLv3
  * @desc [description]
  */
@@ -34,9 +34,10 @@ $statement = \SLiMS\DB::getInstance()
                             COUNT(loan_id) AS total FROM loan AS l 
                             WHERE (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\'' . date('Y-m-d') . '\')) 
                             GROUP BY member_id'));
-
 // get loan data
 $data = $statement->fetchObject();
+
+if (!$data) {$data = new stdClass; $data->total = 0;}
 
 // check need to be repaired mysql database
 $query_of_tables = \SLiMS\DB::getInstance('mysqli')->query('SHOW TABLES');

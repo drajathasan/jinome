@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 01:01:38
- * @modify date 2022-07-08 21:15:34
+ * @modify date 2022-07-14 20:05:03
  * @license GPLv3
  * @desc [description]
  */
@@ -29,6 +29,22 @@ if (!function_exists('jinomeDir'))
     function jinomeDir()
     {
         return basename(str_replace('lib', '', __DIR__));
+    }
+}
+
+if (!function_exists('jinomeBackground'))
+{
+    function jinomeBackground($type = '')
+    {
+        switch ($type) {
+            case '1':
+                return 'linear-gradient(180deg,rgb(57 57 57 / 0%) 0,rgba(63,71,74,.8)),url(https://picsum.photos/1000/500)';
+                break;
+            
+            default:
+                return 'linear-gradient(180deg,rgb(57 57 57 / 0%) 0,rgba(63,71,74,.8)),url(' . jinomeUrlStatic('images/' . rand(1,5) . '.jpg') .')';
+                break;
+        }
     }
 }
 
