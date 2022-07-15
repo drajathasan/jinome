@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 01:12:38
- * @modify date 2022-07-14 09:21:27
+ * @modify date 2022-07-15 09:37:19
  * @license GPLv3
  * @desc [description]
  */
@@ -16,6 +16,15 @@ include __DIR__ . '/lib/autoload.php';
 Rest::handle($_GET['rest']??'');
 ?>
 <!DOCTYPE Html>
+<!--
+   _ _                            
+  (_|_)_ __   ___  _ __ ___   ___ 
+  | | | '_ \ / _ \| '_ ` _ \ / _ \
+  | | | | | | (_) | | | | | |  __/
+ _/ |_|_| |_|\___/|_| |_| |_|\___|
+|__/  
+                             by Drajat Hasan (drajathasan20@gmail.com)
+-->
 <html>
     <head>
         <title><?= $page_title ?></title>

@@ -1,3 +1,16 @@
+<?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2022-07-15 09:41:13
+ * @modify date 2022-07-15 09:41:16
+ * @license GPLv3
+ * @desc [description]
+ */
+
+defined('INDEX_AUTH') or die('Direct access is not allowed');
+
+?>
 <section class="flex flex-col items-center mt-64 mb-2 w-9/12 animate__animated animate__fadeIn">
     <h1 class="text-3xl w-max font-bold text-gray-100 px-2 py-1 rounded-xl">
         Hi, <?= $_SESSION['realname']?>

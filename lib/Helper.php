@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-06-26 01:01:38
- * @modify date 2022-07-14 20:05:03
+ * @modify date 2022-07-15 08:29:09
  * @license GPLv3
  * @desc [description]
  */
@@ -42,7 +42,8 @@ if (!function_exists('jinomeBackground'))
                 break;
             
             default:
-                return 'linear-gradient(180deg,rgb(57 57 57 / 0%) 0,rgba(63,71,74,.8)),url(' . jinomeUrlStatic('images/' . rand(1,5) . '.jpg') .')';
+                $time = date('this');
+                return 'linear-gradient(180deg,rgb(57 57 57 / 0%) 0,rgba(63,71,74,.8)),url(' . jinomeUrlStatic('images/' . rand(1,5) . '.jpg?v=' . $time) .')';
                 break;
         }
     }

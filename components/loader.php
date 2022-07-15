@@ -1,4 +1,15 @@
 <?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2022-07-15 09:41:00
+ * @modify date 2022-07-15 09:41:04
+ * @license GPLv3
+ * @desc [description]
+ */
+
+defined('INDEX_AUTH') or die('Direct access is not allowed');
+
 use Jinome\Supports\Component;
 $mainModule = !in_array($module, ['othermodule','alert','background']);
 

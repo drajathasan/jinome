@@ -3,7 +3,7 @@
  * @author Drajat Hasan
  * @email drajathasan20@gmail.com
  * @create date 2022-07-14 19:22:54
- * @modify date 2022-07-14 20:02:10
+ * @modify date 2022-07-15 07:21:49
  * @license GPLv3
  * @desc [description]
  */
@@ -31,6 +31,6 @@ class Config
     {
         if (!$result) return null;
         $data = $result->fetchObject();
-        return unserialize($data->setting_value)??null;
+        return unserialize($data->setting_value??'')??null;
     }
 }

@@ -4,7 +4,9 @@
   "description": "SLiMS Admin Template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "npx mix watch",
+    "production": "npx mix --production",
+    "build": "node ./bin/builder"
   },
   "repository": {
     "type": "git",

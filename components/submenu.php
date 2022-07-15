@@ -1,3 +1,16 @@
+<?php
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2022-07-15 09:41:22
+ * @modify date 2022-07-15 09:41:27
+ * @license GPLv3
+ * @desc [description]
+ */
+
+defined('INDEX_AUTH') or die('Direct access is not allowed');
+
+?>
 <div id="submenu" class="flex flex-col hidden">
     <div class="flex items-center justify-center text-white font-bold h-40" style="background-image: linear-gradient(180deg,rgb(57 57 57 / 0%) 0,rgba(63,71,74,.8)),url(<?= jinomeUrlStatic('images/' . rand(1,5) . '.jpg') ?>);">
         <h1 class="text-2xl"><?= ucwords(__($module)) ?></h1>

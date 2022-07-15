@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+/**
+ * @author Drajat Hasan
+ * @email drajathasan20@gmail.com
+ * @create date 2022-04-19 12:43:51
+ * @modify date 2022-07-15 09:06:03
+ * @desc [description]
+ */
+
+const fs = require('fs');
+const path = require("path")
+const copy = require("./copy");
+const package = require('../package.json');
+const dirname = `${package.name}-build-${package.version}`;
+const target = `${__dirname}/../../${dirname}/`;
+const current = `${__dirname}/../`;
+
+const importantDirectories = [
+    'dist',
+    'static',
+    'components',
+    'modules',
+    'rest',
+    'lib',
+    'config',
+    'fonts',
+    'css',
+    'config'
+];
+
+const importantFiles = [
+    'index_template.inc.php',
+    'preview.png',
+    'style.css'
+];
+
+fs.rmSync(target, { recursive: true, force: true });
+
+fs.mkdir(target, (err) => {
+    if (!err)
+    { 
+        // copy file and directory from src to build directory
+        importantDirectories.forEach(directory => {
+            copy(current+directory, target+directory);
+        })
+
+        importantFiles.forEach(file => {
+            copy(current+file, target+file);
+        })
+
+        console.log(`Successfully building SLiMS template with directory name : ${dirname}`);
+    }
+});
